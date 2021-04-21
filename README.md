@@ -1,5 +1,5 @@
 # Acertadinha
- Sobre o projeto:
+Sobre o projeto:
 
 “Acertadinha” é a implementação virtual de um popular¹ jogo de baralho. O usuário joga 
 contra bots que atuam de forma dinâmica, fazendo com que cada partida seja única.
