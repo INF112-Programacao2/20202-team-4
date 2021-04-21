@@ -13,11 +13,11 @@ Menu de interação
 Menu de regras
 
 O jogo controla e mantém dados do andamento da partida através de informações como:
-	*A pontuação por turno
-	*Quantas cartas cada jogador possui
-	*Qual a rodada/turno em andamento
-	*Quantos turnos cada jogador apostou que ganharia naquela rodada
-	*As cartas de acordo com cada turno
+	.A pontuação por turno
+	.Quantas cartas cada jogador possui
+	.Qual a rodada/turno em andamento
+	.Quantos turnos cada jogador apostou que ganharia naquela rodada
+	.As cartas de acordo com cada turno
  	
 
 Layout: 
