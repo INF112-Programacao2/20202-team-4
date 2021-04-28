@@ -2,6 +2,7 @@
 #include <vector>
 #include "Cartas.h"
 #include "Baralho.h"
+#include "Entidades.h"
 
 int main(){
 	Baralho baralho;
