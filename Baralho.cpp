@@ -11,9 +11,9 @@ Baralho::Baralho(){
 void Baralho::embaralhaCartas(){
 	srand(time(NULL));
 	for(unsigned int i=0; i<500000; i++){
-		int posicaoAleatoria = rand()%cartaBaralho.size();
-		Cartas *aux = this->cartaBaralho[i%cartaBaralho.size()];
-		this->cartaBaralho[i%cartaBaralho.size()] = this->cartaBaralho[posicaoAleatoria];
+		int posicaoAleatoria = rand()%this->cartaBaralho.size();
+		Cartas *aux = this->cartaBaralho[i%this->cartaBaralho.size()];
+		this->cartaBaralho[i%this->cartaBaralho.size()] = this->cartaBaralho[posicaoAleatoria];
 		this->cartaBaralho[posicaoAleatoria] = aux;
 	}
 }
@@ -23,5 +23,5 @@ void Baralho::imprimeCarta(int pos){
 }
 
 Baralho::~Baralho(){
-	for(int i=0; i<cartaBaralho.size(); i++) delete this->cartaBaralho[i];
+	for(int i=0; i<this->cartaBaralho.size(); i++) delete this->cartaBaralho[i];
 }

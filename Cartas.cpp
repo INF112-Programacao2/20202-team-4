@@ -3,10 +3,10 @@
 #include "Cartas.h"
 
 Cartas::Cartas(int numero, int naipe):numero(numero), naipe(naipe){
-	if((numero == 4 && naipe == 4) ||
-	   (numero == 7 && naipe == 3) ||
-	   (numero == 1 && naipe == 2) ||
-	   (numero == 7 && naipe == 1)) this->especial = true;
+	if((this->numero == 4 && this->naipe == 4) ||
+	   (this->numero == 7 && this->naipe == 3) ||
+	   (this->numero == 1 && this->naipe == 2) ||
+	   (this->numero == 7 && this->naipe == 1)) this->especial = true;
 	else this->especial = false;
 }
 
