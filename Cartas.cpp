@@ -6,8 +6,20 @@ Cartas::Cartas(int numero, int naipe):numero(numero), naipe(naipe){
 	if((this->numero == 4 && this->naipe == 4) ||
 	   (this->numero == 7 && this->naipe == 3) ||
 	   (this->numero == 1 && this->naipe == 2) ||
-	   (this->numero == 7 && this->naipe == 1)) this->especial = true;
-	else this->especial = false;
+	   (this->numero == 7 && this->naipe == 1)) this->ehCartaEspecial = true;
+	else this->ehCartaEspecial = false;
+}
+
+int Cartas::get_numero(){
+	return this->numero;
+}
+
+int Cartas::get_naipe(){
+	return this->naipe;
+}
+
+bool Cartas::get_ehCartaEspecial(){
+	return this->ehCartaEspecial;
 }
 
 void Cartas::imprimeCarta(){
