@@ -6,10 +6,10 @@
 
 class Baralho{
 private:
-	std::vector<Cartas*> cartaBaralho;
+	std::vector<Cartas> cartaBaralho;
 public:
 	Baralho();
-	~Baralho();
+	
 	void embaralhaCartas();
 	void imprimeCarta(int pos);
 };
