@@ -1,10 +1,9 @@
 #include "Entidades.h"
 
-Entidades::Entidades(std::string nome, int pontos, std::string cartas)
+Entidades::Entidades(std::string nome, int pontos)
 {
     this->nome = nome;
     this->pontos = pontos;
-    this->cartas = cartas;
 }
 
 std::string Entidades::get_nome()
@@ -15,4 +14,9 @@ std::string Entidades::get_nome()
 int Entidades::get_pontos()
 {
     return this->pontos;
+}
+
+void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
+{
+	this->cartas.push_back(cartaParaAdicionar);
 }
