@@ -10,7 +10,7 @@ public:
 	
 	int get_numero();
 	int get_naipe();
-	bool get_ehCartaEspecial;
+	bool get_ehCartaEspecial();
 	
 	void imprimeCarta();
 };
