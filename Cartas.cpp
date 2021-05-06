@@ -48,7 +48,7 @@ int comparaForcaCartas(Cartas carta1, Cartas carta2){
 	return 1;
 }
 
-void ordenaCartas(std::vector<Cartas> &cartas){
+std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas){
 	int quantidadeDeCartas = cartas.size();
 	
 	for(int i=0; i<quantidadeDeCartas; i++){
@@ -60,4 +60,6 @@ void ordenaCartas(std::vector<Cartas> &cartas){
 			}
 		}
 	}
+	
+	return cartas;
 }

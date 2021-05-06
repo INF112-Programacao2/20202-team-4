@@ -23,5 +23,5 @@ void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
 
 void Entidades::ordenaCartasDaMao()
 {
-	ordenaCartas(this->cartas);
+	this->cartas = ordenaCartas(this->cartas);
 }
