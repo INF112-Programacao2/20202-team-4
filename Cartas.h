@@ -15,4 +15,6 @@ public:
 	void imprimeCarta();
 };
 
+int comparaForcaCartas(Cartas carta1, Cartas carta2);
+
 #endif
