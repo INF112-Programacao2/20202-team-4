@@ -47,3 +47,17 @@ int comparaForcaCartas(Cartas carta1, Cartas carta2){
 	
 	return 1;
 }
+
+void ordenaCartas(std::vector<Cartas> &cartas){
+	int quantidadeDeCartas = cartas.size();
+	
+	for(int i=0; i<quantidadeDeCartas; i++){
+		for(int j=i; j<quantidadeDeCartas; j++){
+			if(i != j && comparaForcaCartas(cartas[i], cartas[j])){
+				Cartas aux = cartas[i];
+				cartas[i] = cartas[j];
+				cartas[j] = aux;
+			}
+		}
+	}
+}
