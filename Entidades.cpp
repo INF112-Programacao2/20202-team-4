@@ -20,3 +20,8 @@ void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
 {
 	this->cartas.push_back(cartaParaAdicionar);
 }
+
+void Entidades::ordenaCartasDaMao()
+{
+	this->cartas = ordenaCartas(this->cartas);
+}

@@ -7,6 +7,7 @@
 class Baralho{
 private:
 	std::vector<Cartas> cartaBaralho;
+
 public:
 	Baralho();
 	

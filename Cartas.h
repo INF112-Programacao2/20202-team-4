@@ -1,10 +1,13 @@
 #ifndef CARTAS_H
 #define CARTAS_H
 
+#include <vector>
+
 class Cartas{
 private:
 	int numero, naipe;
 	bool ehCartaEspecial;
+
 public:
 	Cartas(int numero, int naipe);
 	
@@ -14,5 +17,8 @@ public:
 	
 	void imprimeCarta();
 };
+
+int comparaForcaCartas(Cartas carta1, Cartas carta2);
+std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas);
 
 #endif
