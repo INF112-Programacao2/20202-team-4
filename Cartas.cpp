@@ -37,7 +37,6 @@ int comparaForcaCartas(Cartas carta1, Cartas carta2){
 	
 	if(!carta1.get_ehCartaEspecial() && !carta2.get_ehCartaEspecial()){
 		if(carta1.get_numero() <= 3 && carta2.get_numero() > 3) return 0;
-		
 		else if(carta1.get_numero() <= 3 && carta2.get_numero() <= 3){
 			if(carta1.get_numero() > carta2.get_numero()) return 0;
 		}else if(carta1.get_numero() > 3 && carta2.get_numero() > 3){
