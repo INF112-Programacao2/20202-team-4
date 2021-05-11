@@ -3,8 +3,7 @@
 
 #include "Entidades.h"
 
-class Calculista:public Entidades
-{
+class Calculista:public Entidades{
 public:
 	Calculista(std::string nome, int pontos);
 	int calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas) override;
