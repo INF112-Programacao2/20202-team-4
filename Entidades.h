@@ -10,6 +10,7 @@ class Entidades{
 protected:
 	std::string nome; 
 	int pontos;
+	int turnosApostados;
 	std::vector<Cartas> cartas;
 
 public:
@@ -17,10 +18,12 @@ public:
 	
 	std::string get_nome();
 	int get_pontos();
+	int get_turnosApostados();
 	
 	void adicionaCarta(Cartas cartaParaAdicionar);
 	virtual int calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas) = 0;
 	void ordenaCartasDaMao();
+	void imprimeCarta(int posicao);
 };
 
 #endif

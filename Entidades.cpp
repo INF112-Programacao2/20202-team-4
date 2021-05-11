@@ -4,6 +4,7 @@ Entidades::Entidades(std::string nome, int pontos)
 {
     this->nome = nome;
     this->pontos = pontos;
+	this->turnosApostados = 0;
 }
 
 std::string Entidades::get_nome()
@@ -16,6 +17,11 @@ int Entidades::get_pontos()
     return this->pontos;
 }
 
+int Entidades::get_turnosApostados()
+{
+	return this->turnosApostados;
+}
+
 void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
 {
 	this->cartas.push_back(cartaParaAdicionar);
@@ -24,4 +30,8 @@ void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
 void Entidades::ordenaCartasDaMao()
 {
 	this->cartas = ordenaCartas(this->cartas);
+}
+
+void Entidades::imprimeCarta(int posicao){
+	this->cartas[posicao].imprimeCarta();
 }
