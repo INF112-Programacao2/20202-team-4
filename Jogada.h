@@ -10,23 +10,23 @@ class Jogada{
 private:
 	Baralho baralho;
 	bool turnoInicial;
-    int rodada;
-    int turno;
-    int jogadorInicialRodada;
-    int jogadorInicialTurno;
-    std::vector<Entidades> jogadores;
+	int rodada;
+	int turno;
+	int jogadorInicialRodada;
+	int jogadorInicialTurno;
+	std::vector<Entidades> jogadores;
 	std::vector<Cartas> cartasJogadas;
-
+	
 public:
 	Jogada();
-    ~Jogada();
-    int get_rodada();
-    int get_turno();
-    void distribuirCartas();
-    void determinaVencedorTurno();
-    void jogaTurno();
-    void mudaTurno();
-    void mudaJogadorInicial();
+	~Jogada();
+	int get_rodada();
+	int get_turno();
+	void distribuirCartas();
+	void determinaVencedorTurno();
+	void jogaTurno();
+	void mudaTurno();
+	void mudaJogadorInicial();
 };
 
 #endif
