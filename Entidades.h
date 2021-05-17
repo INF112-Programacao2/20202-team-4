@@ -19,7 +19,7 @@ public:
 	std::string get_nome();
 	int get_pontos();
 	int get_turnosApostados();
-	int get_carta(int posicao);
+	Cartas get_carta(int posicao);
   
 	void set_pontos(int pontos);
 	void set_turnosApostados(int apostas);
