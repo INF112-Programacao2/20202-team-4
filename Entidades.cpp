@@ -24,7 +24,7 @@ int Entidades::get_turnosApostados()
 	return this->turnosApostados;
 }
 
-int Entidades::get_carta(int posicao)
+Cartas Entidades::get_carta(int posicao)
 {
 	return this->cartas[posicao];
 }
