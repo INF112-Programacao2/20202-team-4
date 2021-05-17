@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include "Jogada.h"
@@ -11,7 +12,7 @@ Jogada::Jogada(){
 	this->jogadorInicialRodada = entidadeAleatoria;
 	this->jogadorInicialTurno = entidadeAleatoria;
 	
-	jogadores.push_back(Troll("Pombal", 0));
+	jogadores.push_back(Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	jogadores.push_back(Calculista("Dilsao", 0));
 	jogadores.push_back(Corajoso("Vinicius", 0));
 	jogadores.push_back(Humano(0));
@@ -20,11 +21,11 @@ Jogada::Jogada(){
 Jogada::~Jogada(){}
 
 
-int get_rodada(){
+int Jogada::get_rodada(){
 	return this->rodada;
 }
 
-int get_turno(){
+int Jogada::get_turno(){
 	return this->turno;
 }
 
@@ -57,13 +58,15 @@ void Jogada::jogaTurno(){
 	if(this->turnoInicial){
 		for(int i=this->jogadorInicialRodada; i<i+4; i++){
 			int apostaFeitaPorJogador = this->jogadores[i%4].calculaJogada(this->turnoInicial, this->cartasJogadas);
-			this->jogadores[i%4].set_turnosApostados(apostaFeitaPorJogador); 
+          	std::cout << this->jogadores[i%4].get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
+			this->jogadores[i%4].set_turnosApostados(apostaFeitaPorJogador);
 		}
 		this->turnoInicial = false;
 	}else{
 		int marcaCarta[4];
 		for(int i=this->jogadorInicialTurno; i<i+4; i++){
 			marcaCarta[i%4] = this->jogadores[i%4].calculaJogada(this->turnoInicial, this->cartasJogadas);
+          	std::cout << this->jogadores[i%4].get_nome() << " jogou "  << jogadores[i%4].get_carta(marcaCarta[i%4]) << std::endl;
 			this->cartasJogadas.push_back(jogadores[i%4].get_carta(marcaCarta[i%4]));
 		}
 		determinaVencedorTurno();
@@ -71,16 +74,16 @@ void Jogada::jogaTurno(){
 	}
 }
 
-void mudaTurno(){
+void Jogada::mudaTurno(){
 	this->turno++;
 	if(this->turno==this->rodada){
-		this->turnoturno = 0;
-		this->turnorodada++;
-		this->turnoInicial == true;
+		this->turno = 0;
+		this->rodada++; 
+		this->turnoInicial = true;
 	}
 }
 
-void mudaJogadorInicial(){
-	if(this->turnoInicial = true) 
+void Jogada::mudaJogadorInicial(){
+	if(this->turnoInicial) 
 		this->jogadorInicialRodada = (this->jogadorInicialRodada+1)%4;
 }
