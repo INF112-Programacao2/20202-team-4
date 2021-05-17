@@ -2,19 +2,21 @@
 
 Entidades::Entidades(std::string nome, int pontos)
 {
-    this->nome = nome;
-    this->pontos = pontos;
+	this->nome = nome;
+	this->pontos = pontos;
 	this->turnosApostados = 0;
 }
 
+Entidades::~Entidades(){}
+
 std::string Entidades::get_nome()
 {
-    return this->nome;
+	return this->nome;
 }
 
 int Entidades::get_pontos()
 {
-    return this->pontos;
+	return this->pontos;
 }
 
 int Entidades::get_turnosApostados()
@@ -22,16 +24,12 @@ int Entidades::get_turnosApostados()
 	return this->turnosApostados;
 }
 
-void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
+int Entidades::get_carta(int posicao)
 {
-	this->cartas.push_back(cartaParaAdicionar);
+	return this->cartas[posicao];
 }
 
-void Entidades::ordenaCartasDaMao()
+void Entidades::set_pontos(int pontos)
 {
-	this->cartas = ordenaCartas(this->cartas);
-}
-
-void Entidades::imprimeCarta(int posicao){
-	this->cartas[posicao].imprimeCarta();
+	this->pontos = pontos;
 }
