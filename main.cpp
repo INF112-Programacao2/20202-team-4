@@ -1,26 +1,25 @@
 #include <iostream>
-#include <vector>
-#include "Cartas.h"
-#include "Baralho.h"
-#include "Entidades.h"
-#include "Corajoso.h"
+#include <cstdlib>
+#include "Jogada.h"
 
 int main(){
-	Corajoso c("corajosin", 0);
-	std::vector<Cartas> cartasJogadas;
-	cartasJogadas.push_back(Cartas(7, 1));
-	c.adicionaCarta(Cartas(1, 1));
-	c.adicionaCarta(Cartas(11, 4));
-	c.adicionaCarta(Cartas(7, 2));
-	c.adicionaCarta(Cartas(4, 1));
-	c.adicionaCarta(Cartas(3, 1));
-		
-	c.ordenaCartasDaMao();
-	for(int i=0; i<5; i++){
-		c.imprimeCarta(i);
-		std::cout << "\n";
-	}
-	std::cout << "\n";
-	c.imprimeCarta(c.calculaJogada(0, cartasJogadas));
+	std::string nomeUsuario;
+  
+	std::cout << "Bem vindo ao Acertadinha! Digite seu nome para iniciar uma partida" << std::endl;
+  	std::cin >> nomeUsuario;
+
+   	
+  	Jogada jogada;
+  	while(jogada.get_rodada() <= 9){
+      system("cls || clear"); //"cls" para windows e "clear" para linux
+      std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\nCartas normais: 3, 2, A, K, J, Q, 7, 6, 5, 4"  << std::endl;
+	  jogada.distribuirCartas();
+      jogada.jogaTurno();
+      jogada.mudaTurno();
+      jogada.mudaJogadorInicial();
+    }
+  
+  	std::cout << "Acabou, todos nos somos vencedores apenas por participar ¯\_(ツ)_/¯" << std::endl;
+	
 	return 0;
 }
