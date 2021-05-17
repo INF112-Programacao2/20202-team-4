@@ -10,7 +10,11 @@ private:
 
 public:
 	Baralho();
-	
+
+	~Baralho();
+
+	Cartas get_carta(int posicao);
+
 	void embaralhaCartas();
 	void imprimeCarta(int pos);
 };
