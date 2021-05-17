@@ -33,3 +33,28 @@ void Entidades::set_pontos(int pontos)
 {
 	this->pontos = pontos;
 }
+
+void Entidades::set_turnosApostados(int apostas)
+{
+	this->turnosApostados = apostas;
+}
+
+void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
+{
+	this->cartas.push_back(cartaParaAdicionar);
+}
+
+void Entidades::ordenaCartasDaMao()
+{
+	this->cartas = ordenaCartas(this->cartas);
+}
+
+void Entidades::imprimeCarta(int posicao)
+{
+	this->cartas[posicao].imprimeCarta();
+}
+
+void Entidades::removeCarta(int posicao)
+{
+	this->cartas.erase(cartas.begin(), cartas.begin()+posicao);
+}
