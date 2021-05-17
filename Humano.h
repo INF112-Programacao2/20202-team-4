@@ -1,3 +1,6 @@
+#ifndef HUMANO_H
+#define HUMANO_H
+
 #include "Entidades.h"
 
 class Humano: public Entidades{
@@ -6,3 +9,5 @@ public:
 	
 	int calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas) override;
 };
+
+#endif

@@ -18,7 +18,7 @@ int main(){
 		jogada.mudaJogadorInicial();
     }
 	
-	std::cout << "Acabou, todos nos somos vencedores apenas por participar ¯\_(ツ)_/¯" << std::endl;
+	std::cout << "Acabou, todos nos somos vencedores apenas por participar" << std::endl;
 
 	return 0;
 }

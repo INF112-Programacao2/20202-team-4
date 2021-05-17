@@ -11,7 +11,7 @@ Baralho::Baralho(){
 Baralho::~Baralho(){}
 
 Cartas Baralho::get_carta(int posicao){
-	return this->cartaBaralho(posicao);
+	return this->cartaBaralho[posicao];
 }
 
 void Baralho::embaralhaCartas(){

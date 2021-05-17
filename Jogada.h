@@ -5,6 +5,10 @@
 #include <vector>
 #include "Baralho.h"
 #include "Entidades.h"
+#include "Troll.h"
+#include "Humano.h"
+#include "Corajoso.h"
+#include "Calculista.h"
 
 class Jogada{
 private:

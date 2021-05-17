@@ -15,7 +15,7 @@ Jogada::Jogada(){
 	jogadores.push_back(Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	jogadores.push_back(Calculista("Dilsao", 0));
 	jogadores.push_back(Corajoso("Vinicius", 0));
-	jogadores.push_back(Humano(0));
+	jogadores.push_back(Humano("Voce", 0));
 }
 
 Jogada::~Jogada(){}
@@ -36,7 +36,7 @@ void Jogada::distribuirCartas(){
 	while(true){
 		if(indiceCarta != 0 && indiceCarta%this->rodada == 0) indiceJogador++;
 		if(indiceJogador == 4) break;
-		this->jogadores.adicionaCarta(this->baralho.get_carta(indiceCarta));
+		this->jogadores[indiceJogador].adicionaCarta(this->baralho.get_carta(indiceCarta));
 		indiceCarta++;
 	}
 }
@@ -46,8 +46,10 @@ void Jogada::determinaVencedorTurno(){
 	for(int i=0; i<4; i++){
 		for(int j=0; j<this->rodada; j++){
 			if(this->jogadores[i].get_carta(j).get_numero() == this->cartasJogadas[0].get_numero() && this->jogadores[i].get_carta(j).get_naipe() == this->cartasJogadas[0].get_naipe()){
-				this->jogadores[i].set_pontos(this->jogadores[i].get_pontos()++);
-				std::cout << "O jogador " << this->jogadores[i].get_nome() << " foi o vencedor do turno, jogando a carta " << this->cartasJogadas[0].imprimeCarta() << "\n";
+				this->jogadores[i].set_pontos(1+this->jogadores[i].get_pontos());
+				std::cout << "O jogador " << this->jogadores[i].get_nome() << " foi o vencedor do turno, jogando a carta ";
+				this->cartasJogadas[0].imprimeCarta();
+				std::cout << "\n";
 				this->jogadorInicialTurno = i;
 			}
 		}
@@ -66,7 +68,9 @@ void Jogada::jogaTurno(){
 		int marcaCarta[4];
 		for(int i=this->jogadorInicialTurno; i<i+4; i++){
 			marcaCarta[i%4] = this->jogadores[i%4].calculaJogada(this->turnoInicial, this->cartasJogadas);
-          	std::cout << this->jogadores[i%4].get_nome() << " jogou "  << jogadores[i%4].get_carta(marcaCarta[i%4]) << std::endl;
+          	std::cout << this->jogadores[i%4].get_nome() << " jogou ";
+			jogadores[i%4].get_carta(marcaCarta[i%4]).imprimeCarta();
+			std::cout << std::endl;
 			this->cartasJogadas.push_back(jogadores[i%4].get_carta(marcaCarta[i%4]));
 		}
 		determinaVencedorTurno();
