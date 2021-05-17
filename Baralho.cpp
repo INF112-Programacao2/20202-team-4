@@ -8,6 +8,12 @@ Baralho::Baralho(){
 	for(int i=11; i<=13; i++) for(int j=1; j<=4; j++) this->cartaBaralho.push_back(Cartas(i, j));
 }
 
+Baralho::~Baralho(){}
+
+Cartas Baralho::get_carta(int posicao){
+	return this->cartaBaralho(posicao);
+}
+
 void Baralho::embaralhaCartas(){
 	srand(time(NULL));
 	for(unsigned int i=0; i<500000; i++){
