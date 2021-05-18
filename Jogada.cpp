@@ -52,10 +52,11 @@ void Jogada::determinaVencedorTurno(){
 		for(int j=0; j<this->rodada; j++){
 			if(this->jogadores[i]->get_carta(j).get_numero() == this->cartasJogadas[0].get_numero() && this->jogadores[i]->get_carta(j).get_naipe() == this->cartasJogadas[0].get_naipe()){
 				this->jogadores[i]->set_pontos(1+this->jogadores[i]->get_pontos());
-				std::cout << "O jogador " << this->jogadores[i]->get_nome() << " foi o vencedor do turno, jogando a carta ";
+				std::cout << "\n\nO jogador " << this->jogadores[i]->get_nome() << " foi o vencedor do turno, jogando a carta ";
 				this->cartasJogadas[0].imprimeCarta();
 				std::cout << "\n";
 				this->jogadorInicialTurno = i;
+				return;
 			}
 		}
 	}
@@ -80,11 +81,11 @@ void Jogada::jogaTurno(){
 		}
 		determinaVencedorTurno();
 		for(int i=0; i<4; i++) jogadores[i]->removeCarta(marcaCarta[i]);
+		this->cartasJogadas.clear();
 	}
 }
 
 void Jogada::mudaTurno(){
-	std::cout << "TURNO: " << this->turno << "\nRODADA: " << this->rodada << "\n\n";
 	if(this->turno == this->rodada){
 		this->turno = 0;
 		this->rodada++; 

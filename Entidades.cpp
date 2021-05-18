@@ -56,5 +56,5 @@ void Entidades::imprimeCarta(int posicao)
 
 void Entidades::removeCarta(int posicao)
 {
-	this->cartas.erase(cartas.begin(), cartas.begin()+posicao);
+	this->cartas.erase(cartas.begin()+posicao);
 }

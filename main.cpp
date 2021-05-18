@@ -10,16 +10,20 @@ int main(){
 	std::cin >> nomeUsuario;
 	
 	Jogada jogada;
-	while(jogada.get_rodada() <= 9){
+	while(jogada.get_rodada() <= 4){
 		system("cls || clear"); //"cls" para windows e "clear" para linux
-		std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\nCartas normais: 3, 2, A, K, J, Q, 7, 6, 5, 4"  << std::endl;
+		std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\n";
+		std::cout << "Cartas normais: 3, 2, A, K, J, Q, 7, 6, 5, 4\n"  << std::endl;
+		std::cout << "Rodada: " << jogada.get_rodada() << "\nTurno: " << jogada.get_turno() << "\n\n";
 		jogada.distribuirCartas();
 		jogada.jogaTurno();
 		jogada.mudaTurno();
 		jogada.mudaJogadorInicial();
+		std::cout << "\n\n\n";
 		system("pause");
     }
 	
+	system("cls || clear");
 	std::cout << "Acabou, todos nos somos vencedores apenas por participar" << std::endl;
 
 	return 0;

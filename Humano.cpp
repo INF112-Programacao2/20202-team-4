@@ -18,14 +18,15 @@ int Humano::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 		do{
 			std::cin >> this->turnosApostados;
 		}while(this->turnosApostados < 0 || this->turnosApostados > this->cartas.size()); //tratamento de exceção para que o usuario nao escolha uma aposta fora do escopo 
-
+		std::cout << "\n\n";
 		return this->turnosApostados;
 	}else{
 		int posicaoEscolhida;
-		std::cout << "\n\nEscolha uma carta (pela posicao): ";
+		std::cout << "Escolha uma carta (pela posicao): ";
 		do{
 			std::cin >> posicaoEscolhida;
 		}while(posicaoEscolhida < 0 || posicaoEscolhida > this->cartas.size()); //tratamento de exceção para que o usuario nao escolha uma carta fora do escopo
+		std::cout << "\n\n";
 		return posicaoEscolhida-1;
     }
 }
