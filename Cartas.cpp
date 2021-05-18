@@ -24,7 +24,7 @@ bool Cartas::get_ehCartaEspecial(){
 
 void Cartas::imprimeCarta(){ 
 	std::string valoresDasCartas = "A23456789 QJK";
-	std::string naipes[4] = {"o", "e", "c", "p"}; 
+	std::string naipes[4] = {" de ouros", " de espadas", " de copas", " de paus"}; 
 	this->numero == 10 ? std::cout << 10 : std::cout << valoresDasCartas[this->numero-1];
 	std::cout << naipes[this->naipe-1];
 }
