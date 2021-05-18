@@ -28,7 +28,7 @@ main.o:	Cartas.h	Entidades.h Calculista.h	Corajoso.h	Troll.h	Humano.h	Jogada.h	m
 	${CC}	${CFLAGS}	-c	main.cpp
 
 main:	main.o	Cartas.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o
-	${CC}	${CFLAGS}	-o	main	main.o	Cartas.o	Potencia.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o
+	${CC}	${CFLAGS}	-o	main	main.o	Cartas.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o
 #Rule for cleaning files generated during compilation.
 #Call 'make clean' to use it
 clean:
