@@ -3,7 +3,7 @@
 #include <ctime>
 #include "Baralho.h"
 
-Baralho::Baralho(){
+Baralho::Baralho(){ //Adiciona cartas ao baralho
 	for(int i=1; i<=7; i++) for(int j=1; j<=4; j++) this->cartaBaralho.push_back(Cartas(i, j));
 	for(int i=11; i<=13; i++) for(int j=1; j<=4; j++) this->cartaBaralho.push_back(Cartas(i, j));
 }
@@ -16,7 +16,7 @@ Cartas Baralho::get_carta(int posicao){
 
 void Baralho::embaralhaCartas(){
 	srand(time(NULL));
-	for(unsigned int i=0; i<500000; i++){
+	for(unsigned int i=0; i<500000; i++){ //Muda muito aleatoriamente a posição das cartas
 		int posicaoAleatoria = rand()%this->cartaBaralho.size();
 		Cartas aux = this->cartaBaralho[i%this->cartaBaralho.size()];
 		this->cartaBaralho[i%this->cartaBaralho.size()] = this->cartaBaralho[posicaoAleatoria];

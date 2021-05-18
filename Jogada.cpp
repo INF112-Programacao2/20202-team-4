@@ -7,7 +7,7 @@ Jogada::Jogada(){
 	srand(time(NULL));
 	
 	baralho = Baralho();
-	int entidadeAleatoria = 0;
+	int entidadeAleatoria = rand()%4; //Seleciona jogador aleatório para iniciar o jogo
 	this->rodada = 1;
 	this->turno = 0;
 	this->turnoInicial = true;
@@ -17,7 +17,7 @@ Jogada::Jogada(){
 	jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	jogadores.push_back(new Calculista("Dilsao", 0));
 	jogadores.push_back(new Corajoso("Vinicius", 0));
-	jogadores.push_back(new Humano("Julio", 0));
+	jogadores.push_back(new Humano("Julio", 0)); //Jogadores adicionados à partida
 }
 
 Jogada::~Jogada(){}
@@ -38,14 +38,15 @@ void Jogada::distribuirCartas(){
 		
 		baralho.embaralhaCartas();
 		while(true){
-			if(indiceCarta != 0 && indiceCarta%this->rodada == 0) indiceJogador++;
-			if(indiceJogador == 4) break;
+			if(indiceCarta != 0 && indiceCarta%this->rodada == 0) indiceJogador++; //Muda o jogador que recebe as cartas quando o outro recebeu (rodada) cartas
+			if(indiceJogador == 4) break; //Para a distribuição quando o último jogador recebe suas devidas cartas
 			this->jogadores[indiceJogador]->adicionaCarta(this->baralho.get_carta(indiceCarta));
 			indiceCarta++;
 		}
 	}
 }
 
+//A função compara a carta vencedora do turno com as cartas dos jogadores. Quem a tiver jogado, venceu
 void Jogada::determinaVencedorTurno(){
 	this->cartasJogadas = ordenaCartas(this->cartasJogadas);
 	for(int i=0; i<4; i++){
@@ -63,7 +64,7 @@ void Jogada::determinaVencedorTurno(){
 }
 
 void Jogada::jogaTurno(){
-	if(this->turnoInicial){
+	if(this->turnoInicial){ //Turno de apostas
 		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
 			int apostaFeitaPorJogador = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
           	std::cout << this->jogadores[i%4]->get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
@@ -71,7 +72,7 @@ void Jogada::jogaTurno(){
 		}
 		this->turnoInicial = false;
 	}else{
-		int marcaCarta[4];
+		int marcaCarta[4]; //Marca carta jogada para remover de cada entidade depois que for declarado o vencedor
 		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+4; i++){
 			marcaCarta[i%4] = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
           	std::cout << this->jogadores[i%4]->get_nome() << " jogou ";
@@ -81,7 +82,7 @@ void Jogada::jogaTurno(){
 		}
 		determinaVencedorTurno();
 		for(int i=0; i<4; i++) jogadores[i]->removeCarta(marcaCarta[i]);
-		this->cartasJogadas.clear();
+		this->cartasJogadas.clear(); //Limpa mesa após turno
 	}
 }
 
@@ -95,5 +96,5 @@ void Jogada::mudaTurno(){
 
 void Jogada::mudaJogadorInicial(){
 	if(this->turnoInicial) 
-		this->jogadorInicialRodada = (this->jogadorInicialRodada+1)%4;
+		this->jogadorInicialRodada = (this->jogadorInicialRodada+1)%4; //Rodada nova sempre começa com jogador aleatório
 }

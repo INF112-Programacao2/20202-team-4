@@ -39,7 +39,7 @@ void Entidades::set_turnosApostados(int apostas)
 	this->turnosApostados = apostas;
 }
 
-void Entidades::adicionaCarta(Cartas cartaParaAdicionar)
+void Entidades::adicionaCarta(Cartas cartaParaAdicionar) //Adiciona carta na mão do jogador
 {
 	this->cartas.push_back(cartaParaAdicionar);
 }
