@@ -17,7 +17,7 @@ Jogada::Jogada(){
 	jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	jogadores.push_back(new Calculista("Dilsao", 0));
 	jogadores.push_back(new Corajoso("Vinicius", 0));
-	jogadores.push_back(new Humano("Voce", 0));
+	jogadores.push_back(new Humano("Julio", 0));
 }
 
 Jogada::~Jogada(){}
