@@ -18,7 +18,7 @@ private:
 	int turno;
 	int jogadorInicialRodada;
 	int jogadorInicialTurno;
-	std::vector<Entidades> jogadores;
+	std::vector<Entidades*> jogadores;
 	std::vector<Cartas> cartasJogadas;
 	
 public:
