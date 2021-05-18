@@ -5,7 +5,14 @@ Humano::Humano(std::string nome, int pontos):Entidades(nome, pontos){}
 
 int Humano::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 	std::vector<Cartas> cartasDaMaoOrdenadas = ordenaCartas(this->cartas);
-
+	
+	std::cout << "\n\nSuas cartas sao: ";
+	for (int i = 0; i < this->cartas.size(); i++){
+		std::cout << i+1 << ": ";
+		cartas[i].imprimeCarta(); 
+		std::cout << (i == this->cartas.size()-1 ? "\n" : ", "); //imprimir virgula e a proxima carta ate o final, imprimindo um \n
+	}
+	
 	if(turnoInicial){ //Se for o inicio da rodada, as apostas serão feitas
 		std::cout << "Sua aposta: ";
 		do{
@@ -14,13 +21,6 @@ int Humano::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 
 		return this->turnosApostados;
 	}else{
-		std::cout << "\n\nSuas cartas sao: ";
-		for (int i = 0; i < this->cartas.size(); i++){
-			std::cout << cartas.size() << ": ";
-			cartas[i].imprimeCarta(); 
-			std::cout << (i == this->cartas.size()-1 ? "\n" : ", "); //imprimir virgula e a proxima carta ate o final, imprimindo um \n
-		}
-		  
 		int posicaoEscolhida;
 		std::cout << "\n\nEscolha uma carta (pela posicao): ";
 		do{

@@ -7,9 +7,9 @@ Jogada::Jogada(){
 	srand(time(NULL));
 	
 	baralho = Baralho();
-	int entidadeAleatoria = 1;
+	int entidadeAleatoria = 0;
 	this->rodada = 1;
-	this->turno = 1;
+	this->turno = 0;
 	this->turnoInicial = true;
 	this->jogadorInicialRodada = entidadeAleatoria;
 	this->jogadorInicialTurno = entidadeAleatoria;
@@ -42,8 +42,6 @@ void Jogada::distribuirCartas(){
 			if(indiceJogador == 4) break;
 			this->jogadores[indiceJogador]->adicionaCarta(this->baralho.get_carta(indiceCarta));
 			indiceCarta++;
-			this->baralho.get_carta(indiceCarta).imprimeCarta();
-			std::cout << std::endl;
 		}
 	}
 }
@@ -66,7 +64,6 @@ void Jogada::determinaVencedorTurno(){
 void Jogada::jogaTurno(){
 	if(this->turnoInicial){
 		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
-			std::cout << "\ni=" << i << "\n";
 			int apostaFeitaPorJogador = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
           	std::cout << this->jogadores[i%4]->get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
 			this->jogadores[i%4]->set_turnosApostados(apostaFeitaPorJogador);
@@ -80,18 +77,16 @@ void Jogada::jogaTurno(){
 			jogadores[i%4]->get_carta(marcaCarta[i%4]).imprimeCarta();
 			std::cout << std::endl;
 			this->cartasJogadas.push_back(jogadores[i%4]->get_carta(marcaCarta[i%4]));
-			std::cout << i << "\ni=" << i << "\n";
 		}
 		determinaVencedorTurno();
 		for(int i=0; i<4; i++) jogadores[i]->removeCarta(marcaCarta[i]);
-		std::cout << "\n\n" << this->turno << "\n";
 	}
 }
 
 void Jogada::mudaTurno(){
 	std::cout << "TURNO: " << this->turno << "\nRODADA: " << this->rodada << "\n\n";
 	if(this->turno == this->rodada){
-		this->turno = 1;
+		this->turno = 0;
 		this->rodada++; 
 		this->turnoInicial = true;
 	}else this->turno++;

@@ -41,9 +41,6 @@ int Calculista::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogad
 			if(!comparaForcaCartas(cartasDaMaoOrdenadas[0], cartasJogadas[0])) return 0;  //Joga a mais forte se for for possivel ganhar com ela 
 		}
 		
-		if(rand()%100 > 50)//Escolhe uma das cartas mais fracas para descartar, se nenhuma das jogadas anteriores foi possivel
-			return quantidadeCartas-1; 
-		else
-			return quantidadeCartas-2;
+		return quantidadeCartas-1; //Descarta a carta mais fraca
 	}
 }
