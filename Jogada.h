@@ -32,6 +32,7 @@ public:
 	void jogaTurno();
 	void mudaTurno();
 	void mudaJogadorInicial();
+	void imprimeVidas();
 };
 
 #endif

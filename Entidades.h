@@ -7,22 +7,25 @@
 
 class Entidades{
 protected:
-	std::string nome; 
-	int pontos;
+	std::string nome;
+	int turnosVencidos;
 	int turnosApostados;
+	int vida;
 	std::vector<Cartas> cartas;
 
 public:
-	Entidades(std::string nome, int pontos);
+	Entidades(std::string nome, int turnosVencidos);
   	~Entidades();
 	
 	std::string get_nome();
-	int get_pontos();
+	int get_turnosVencidos();
 	int get_turnosApostados();
+	int get_vida();
 	Cartas get_carta(int posicao);
   
-	void set_pontos(int pontos);
+	void set_turnosVencidos(int turnosVencidos);
 	void set_turnosApostados(int apostas);
+	void set_vida(int vida);
 	
 	void adicionaCarta(Cartas cartaParaAdicionar);
 	virtual int calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas) = 0; 

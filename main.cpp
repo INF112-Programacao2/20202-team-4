@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "Jogada.h"
+#include "funcoesUteis.h"
 
 int main(){
 	system("cls || clear");
@@ -12,9 +13,9 @@ int main(){
 	Jogada jogada(nomeUsuario);
 	while(jogada.get_rodada() <= 4){
 		system("cls || clear"); //"cls" para windows e "clear" para linux
-		std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\n";
-		std::cout << "Cartas normais: 3, 2, A, K, J, Q, 7, 6, 5, 4\n"  << std::endl;
+		imprimeMenuFixo();
 		std::cout << "Rodada: " << jogada.get_rodada() << "\nTurno: " << jogada.get_turno() << "\n\n";
+		jogada.imprimeVidas();
 		jogada.distribuirCartas();
 		jogada.jogaTurno();
 		jogada.mudaTurno();

@@ -1,10 +1,11 @@
 #include "Entidades.h"
 
-Entidades::Entidades(std::string nome, int pontos)
+Entidades::Entidades(std::string nome, int turnosVencidos)
 {
 	this->nome = nome;
-	this->pontos = pontos;
+	this->turnosVencidos = turnosVencidos;
 	this->turnosApostados = 0;
+	this->vida = 3;
 }
 
 Entidades::~Entidades(){}
@@ -14,9 +15,9 @@ std::string Entidades::get_nome()
 	return this->nome;
 }
 
-int Entidades::get_pontos()
+int Entidades::get_turnosVencidos()
 {
-	return this->pontos;
+	return this->turnosVencidos;
 }
 
 int Entidades::get_turnosApostados()
@@ -24,19 +25,29 @@ int Entidades::get_turnosApostados()
 	return this->turnosApostados;
 }
 
+int Entidades::get_vida()
+{
+	return this->vida;
+}
+
 Cartas Entidades::get_carta(int posicao)
 {
 	return this->cartas[posicao];
 }
 
-void Entidades::set_pontos(int pontos)
+void Entidades::set_turnosVencidos(int turnosVencidos)
 {
-	this->pontos = pontos;
+	this->turnosVencidos = turnosVencidos;
 }
 
 void Entidades::set_turnosApostados(int apostas)
 {
 	this->turnosApostados = apostas;
+}
+
+void Entidades::set_vida(int vida)
+{
+	this->vida = vida;
 }
 
 void Entidades::adicionaCarta(Cartas cartaParaAdicionar) //Adiciona carta na mão do jogador

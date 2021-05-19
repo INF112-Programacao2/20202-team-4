@@ -29,6 +29,8 @@ void Cartas::imprimeCarta(){
 	std::cout << naipes[this->naipe-1];
 }
 
+Cartas::~Cartas(){}
+
 int comparaForcaCartas(Cartas carta1, Cartas carta2){ //retorna 0 se a carta 1 for mais forte e 1 caso contrário
 	if(carta1.get_ehCartaEspecial() && !carta2.get_ehCartaEspecial()) return 0; //a carta especial é sempre mais forte
 	
@@ -63,5 +65,3 @@ std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas){
 	
 	return cartas;
 }
-
-Cartas::~Cartas(){}

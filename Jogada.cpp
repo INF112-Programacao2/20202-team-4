@@ -14,10 +14,10 @@ Jogada::Jogada(std::string nomeUsuario){
 	this->jogadorInicialRodada = entidadeAleatoria;
 	this->jogadorInicialTurno = entidadeAleatoria;
 	
-	jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
-	jogadores.push_back(new Calculista("Dilsao", 0));
-	jogadores.push_back(new Corajoso("Vinicius", 0));
-	jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
+	this->jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
+	this->jogadores.push_back(new Calculista("Dilsao", 0));
+	this->jogadores.push_back(new Corajoso("Vinicius", 0));
+	this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
 
 Jogada::~Jogada(){
@@ -41,7 +41,7 @@ void Jogada::distribuirCartas(){
 		baralho.embaralhaCartas();
 		while(true){
 			if(indiceCarta != 0 && indiceCarta%this->rodada == 0) indiceJogador++; //Muda o jogador que recebe as cartas quando o outro recebeu (rodada) cartas
-			if(indiceJogador == 4) break; //Para a distribuição quando o último jogador recebe suas devidas cartas
+			if(indiceJogador == this->jogadores.size()) break; //Para a distribuição quando o último jogador recebe suas devidas cartas
 			this->jogadores[indiceJogador]->adicionaCarta(this->baralho.get_carta(indiceCarta));
 			indiceCarta++;
 		}
@@ -51,10 +51,10 @@ void Jogada::distribuirCartas(){
 //A função compara a carta vencedora do turno com as cartas dos jogadores. Quem a tiver jogado, venceu
 void Jogada::determinaVencedorTurno(){
 	this->cartasJogadas = ordenaCartas(this->cartasJogadas);
-	for(int i=0; i<4; i++){
+	for(int i=0; i<this->jogadores.size(); i++){
 		for(int j=0; j<this->rodada; j++){
 			if(this->jogadores[i]->get_carta(j).get_numero() == this->cartasJogadas[0].get_numero() && this->jogadores[i]->get_carta(j).get_naipe() == this->cartasJogadas[0].get_naipe()){
-				this->jogadores[i]->set_pontos(1+this->jogadores[i]->get_pontos());
+				this->jogadores[i]->set_turnosVencidos(1+this->jogadores[i]->get_turnosVencidos());
 				std::cout << "\n\nO jogador " << this->jogadores[i]->get_nome() << " foi o vencedor do turno, jogando a carta ";
 				this->cartasJogadas[0].imprimeCarta();
 				std::cout << "\n";
@@ -70,32 +70,32 @@ void Jogada::jogaTurno(){
 	
 	if(this->turnoInicial){ //Turno de apostas
 	
-		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
-			std::cout << this->jogadores[i%4]->get_nome() << (i+1 == jogadorInicialRodada+4 ? "\n\n" : ", "); //Imprime a ordem inicial dos jogadores
+		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+this->jogadores.size(); i++){
+			std::cout << this->jogadores[i%this->jogadores.size()]->get_nome() << (i+1 == jogadorInicialRodada+this->jogadores.size() ? "\n\n" : ", "); //Imprime a ordem inicial dos jogadores
 		}
 		
-		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
-			int apostaFeitaPorJogador = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
-          	std::cout << this->jogadores[i%4]->get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
-			this->jogadores[i%4]->set_turnosApostados(apostaFeitaPorJogador);
+		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+this->jogadores.size(); i++){
+			int apostaFeitaPorJogador = this->jogadores[i%this->jogadores.size()]->calculaJogada(this->turnoInicial, this->cartasJogadas);
+          	std::cout << this->jogadores[i%this->jogadores.size()]->get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
+			this->jogadores[i%this->jogadores.size()]->set_turnosApostados(apostaFeitaPorJogador);
 		}
 		this->turnoInicial = false;
 	}else{
 		
-		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+4; i++){
-			std::cout << this->jogadores[i%4]->get_nome() << (i+1 == jogadorInicialTurno+4 ? "\n\n" : ", "); //Imprime a ordem dos jogadores
+		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+this->jogadores.size(); i++){
+			std::cout << this->jogadores[i%this->jogadores.size()]->get_nome() << (i+1 == jogadorInicialTurno+this->jogadores.size() ? "\n\n" : ", "); //Imprime a ordem dos jogadores
 		}
 		
-		int marcaCarta[4]; //Marca carta jogada para remover de cada entidade depois que for declarado o vencedor
-		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+4; i++){
-			marcaCarta[i%4] = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
-          	std::cout << this->jogadores[i%4]->get_nome() << " jogou ";
-			jogadores[i%4]->get_carta(marcaCarta[i%4]).imprimeCarta();
+		int marcaCarta[this->jogadores.size()]; //Marca carta jogada para remover de cada entidade depois que for declarado o vencedor
+		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+this->jogadores.size(); i++){
+			marcaCarta[i%this->jogadores.size()] = this->jogadores[i%this->jogadores.size()]->calculaJogada(this->turnoInicial, this->cartasJogadas);
+          	std::cout << this->jogadores[i%this->jogadores.size()]->get_nome() << " jogou ";
+			this->jogadores[i%this->jogadores.size()]->get_carta(marcaCarta[i%this->jogadores.size()]).imprimeCarta();
 			std::cout << std::endl;
-			this->cartasJogadas.push_back(jogadores[i%4]->get_carta(marcaCarta[i%4]));
+			this->cartasJogadas.push_back(this->jogadores[i%this->jogadores.size()]->get_carta(marcaCarta[i%this->jogadores.size()]));
 		}
 		determinaVencedorTurno();
-		for(int i=0; i<4; i++) jogadores[i]->removeCarta(marcaCarta[i]);
+		for(int i=0; i<this->jogadores.size(); i++) this->jogadores[i]->removeCarta(marcaCarta[i]);
 		this->cartasJogadas.clear(); //Limpa mesa após turno
 	}
 }
@@ -103,12 +103,26 @@ void Jogada::jogaTurno(){
 void Jogada::mudaTurno(){
 	if(this->turno == this->rodada){
 		this->turno = 0;
-		this->rodada++; 
+		this->rodada++;
 		this->turnoInicial = true;
+		for(int i=0; i<this->jogadores.size(); i++){
+			if(this->jogadores[i]->get_turnosVencidos() != this->jogadores[i]->get_turnosApostados()){
+				this->jogadores[i]->set_vida(this->jogadores[i]->get_vida()-1);
+			}
+			
+			this->jogadores[i]->set_turnosVencidos(0);
+		}
 	}else this->turno++;
 }
 
 void Jogada::mudaJogadorInicial(){
 	if(this->turnoInicial) 
-		this->jogadorInicialRodada = (this->jogadorInicialRodada+1)%4; //Rodada nova sempre começa com jogador aleatório
+		this->jogadorInicialRodada = (this->jogadorInicialRodada+1)%this->jogadores.size(); //Rodada nova sempre começa com jogador aleatório
+}
+
+void Jogada::imprimeVidas(){
+	std::cout << "Vidas: ";
+	for(int i=0; i<this->jogadores.size(); i++){
+		std::cout << this->jogadores[i]->get_nome() << " - " << this->jogadores[i]->get_vida() << (i+1 == this->jogadores.size() ? "\n" : ", ");
+	}
 }
