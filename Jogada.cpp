@@ -3,7 +3,7 @@
 #include <ctime>
 #include "Jogada.h"
 
-Jogada::Jogada(){
+Jogada::Jogada(std::string nomeUsuario){
 	srand(time(NULL));
 	
 	baralho = Baralho();
@@ -17,7 +17,7 @@ Jogada::Jogada(){
 	jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	jogadores.push_back(new Calculista("Dilsao", 0));
 	jogadores.push_back(new Corajoso("Vinicius", 0));
-	jogadores.push_back(new Humano("Julio", 0)); //Jogadores adicionados à partida
+	jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
 
 Jogada::~Jogada(){}

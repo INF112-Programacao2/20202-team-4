@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Baralho.h"
 #include "Entidades.h"
 #include "Troll.h"
@@ -22,7 +23,7 @@ private:
 	std::vector<Cartas> cartasJogadas;
 	
 public:
-	Jogada();
+	Jogada(std::string nomeUsuario);
 	~Jogada();
 	int get_rodada();
 	int get_turno();

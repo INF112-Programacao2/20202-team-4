@@ -9,7 +9,7 @@ int main(){
 	std::cout << "Bem vindo ao Acertadinha! Digite seu nome para iniciar uma partida" << std::endl;
 	std::cin >> nomeUsuario;
 	
-	Jogada jogada;
+	Jogada jogada(nomeUsuario);
 	while(jogada.get_rodada() <= 4){
 		system("cls || clear"); //"cls" para windows e "clear" para linux
 		std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\n";
