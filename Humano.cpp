@@ -9,7 +9,7 @@ int Humano::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 	std::cout << "\n\nSuas cartas sao: ";
 	for (int i = 0; i < this->cartas.size(); i++){
 		std::cout << i+1 << ": ";
-		cartas[i].imprimeCarta(); 
+		this->cartas[i].imprimeCarta(); 
 		std::cout << (i == this->cartas.size()-1 ? "\n" : ", "); //imprimir virgula e a proxima carta ate o final, imprimindo um \n
 	}
 	

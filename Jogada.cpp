@@ -66,7 +66,14 @@ void Jogada::determinaVencedorTurno(){
 }
 
 void Jogada::jogaTurno(){
+	std::cout << "Ordem dos jogadores: ";
+	
 	if(this->turnoInicial){ //Turno de apostas
+	
+		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
+			std::cout << this->jogadores[i%4]->get_nome() << (i+1 == jogadorInicialRodada+4 ? "\n\n" : ", "); //Imprime a ordem inicial dos jogadores
+		}
+		
 		for(int i=this->jogadorInicialRodada; i<jogadorInicialRodada+4; i++){
 			int apostaFeitaPorJogador = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
           	std::cout << this->jogadores[i%4]->get_nome() << " aposta " << apostaFeitaPorJogador << " turnos\n";
@@ -74,6 +81,11 @@ void Jogada::jogaTurno(){
 		}
 		this->turnoInicial = false;
 	}else{
+		
+		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+4; i++){
+			std::cout << this->jogadores[i%4]->get_nome() << (i+1 == jogadorInicialTurno+4 ? "\n\n" : ", "); //Imprime a ordem dos jogadores
+		}
+		
 		int marcaCarta[4]; //Marca carta jogada para remover de cada entidade depois que for declarado o vencedor
 		for(int i=this->jogadorInicialTurno; i<jogadorInicialTurno+4; i++){
 			marcaCarta[i%4] = this->jogadores[i%4]->calculaJogada(this->turnoInicial, this->cartasJogadas);
