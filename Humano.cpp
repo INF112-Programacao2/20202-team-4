@@ -30,3 +30,5 @@ int Humano::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 		return posicaoEscolhida-1;
     }
 }
+
+Humano::~Humano(){}

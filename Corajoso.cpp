@@ -42,3 +42,5 @@ int Corajoso::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas
 		return quantidadeCartas >= 1 ? quantidadeCartas-1 : 0; //Depois de jogar uma carta, remove ela do baralho
 	}
 }
+
+Corajoso::~Corajoso(){}

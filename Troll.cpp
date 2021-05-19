@@ -12,3 +12,5 @@ int Troll::calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas){
 		return rand()%this->cartas.size(); //faz uma aposta aleatoria 
 	}else return 0; //joga uma carta aleatoria da mão
 }
+
+Troll::~Troll(){}

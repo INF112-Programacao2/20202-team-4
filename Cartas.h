@@ -16,6 +16,7 @@ public:
 	bool get_ehCartaEspecial();
 	
 	void imprimeCarta();
+	~Cartas();
 };
 
 int comparaForcaCartas(Cartas carta1, Cartas carta2);

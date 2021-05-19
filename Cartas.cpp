@@ -63,3 +63,5 @@ std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas){
 	
 	return cartas;
 }
+
+Cartas::~Cartas(){}

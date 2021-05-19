@@ -20,7 +20,9 @@ Jogada::Jogada(std::string nomeUsuario){
 	jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
 
-Jogada::~Jogada(){}
+Jogada::~Jogada(){
+	this->jogadores.clear();
+}
 
 
 int Jogada::get_rodada(){
