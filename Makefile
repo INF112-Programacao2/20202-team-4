@@ -2,6 +2,9 @@ CC=g++
 CFLAGS=-std=c++11	-Wall
 all:	main
 
+Baralho.o:	Baralho.h	Baralho.cpp
+	${CC}	${CFLAGS}	-c	Baralho.cpp
+
 Cartas.o:	Cartas.h	Cartas.cpp
 	${CC}	${CFLAGS}	-c	Cartas.cpp
 
@@ -23,12 +26,14 @@ Humano.o:	Humano.h	Humano.cpp
 Jogada.o:	Jogada.h	Jogada.cpp
 	${CC}	${CFLAGS}	-c	Jogada.cpp
 
+FuncoesUteis.o: FuncoesUteis.h FuncoesUteis.cpp
+	${CC}	${CFLAGS}	-c	FuncoesUteis.cpp
 
-main.o:	Cartas.h	Entidades.h Calculista.h	Corajoso.h	Troll.h	Humano.h	Jogada.h	main.cpp
+main.o:	Baralho.h Cartas.h	Entidades.h Calculista.h	Corajoso.h	Troll.h	Humano.h	Jogada.h	FuncoesUteis.h main.cpp
 	${CC}	${CFLAGS}	-c	main.cpp
 
-main:	main.o	Cartas.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o
-	${CC}	${CFLAGS}	-o	main	main.o	Cartas.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o
+main:	main.o	Baralho.o Cartas.o Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o FuncoesUteis.o
+	${CC}	${CFLAGS}	-o	main	main.o	Baralho.o Cartas.o	Entidades.o	Calculista.o	Corajoso.o	Troll.o	Humano.o	Jogada.o FuncoesUteis.o
 #Rule for cleaning files generated during compilation.
 #Call 'make clean' to use it
 clean:
