@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Cartas.h"
+#include "funcoesUteis.h"
 
 class Entidades{
 protected:

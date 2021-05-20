@@ -11,7 +11,7 @@ int main(){
 	std::cin >> nomeUsuario;
 	
 	Jogada jogada(nomeUsuario);
-	while(jogada.get_rodada() <= 4){
+	while(true){
 		system("cls || clear"); //"cls" para windows e "clear" para linux
 		imprimeMenuFixo();
 		std::cout << "Rodada: " << jogada.get_rodada() << "\nTurno: " << jogada.get_turno() << "\n\n";

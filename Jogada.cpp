@@ -17,7 +17,7 @@ Jogada::Jogada(std::string nomeUsuario){
 	this->jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
 	this->jogadores.push_back(new Calculista("Dilsao", 0));
 	this->jogadores.push_back(new Corajoso("Vinicius", 0));
-	this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
+	//this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
 
 Jogada::~Jogada(){
@@ -100,18 +100,25 @@ void Jogada::jogaTurno(){
 	}
 }
 
+void Jogada::analiseRodada(){
+	for(int i=0; i<this->jogadores.size(); i++){
+		if(this->jogadores[i]->get_turnosVencidos() != this->jogadores[i]->get_turnosApostados()){
+			this->jogadores[i]->set_vida(this->jogadores[i]->get_vida()-1);
+			if(this->jogadores[i]->get_vida() == 0) this->jogadores.erase(this->jogadores.begin()+i); //Remove jogador com 0 vidas
+		}
+		
+		this->jogadores[i]->set_turnosVencidos(0);
+	}
+	
+	if(this->jogadores.size() == 1) std::cout << "PARABENS " << this->jogadores[0]->get_nome() << " VOCE VENCEU!!!";
+}
+
 void Jogada::mudaTurno(){
 	if(this->turno == this->rodada){
 		this->turno = 0;
 		this->rodada++;
 		this->turnoInicial = true;
-		for(int i=0; i<this->jogadores.size(); i++){
-			if(this->jogadores[i]->get_turnosVencidos() != this->jogadores[i]->get_turnosApostados()){
-				this->jogadores[i]->set_vida(this->jogadores[i]->get_vida()-1);
-			}
-			
-			this->jogadores[i]->set_turnosVencidos(0);
-		}
+		analiseRodada();
 	}else this->turno++;
 }
 

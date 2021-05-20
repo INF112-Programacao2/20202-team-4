@@ -19,7 +19,4 @@ public:
 	~Cartas();
 };
 
-int comparaForcaCartas(Cartas carta1, Cartas carta2);
-std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas);
-
 #endif

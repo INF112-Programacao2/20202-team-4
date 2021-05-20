@@ -30,6 +30,7 @@ public:
 	void distribuirCartas();
 	void determinaVencedorTurno();
 	void jogaTurno();
+	void analiseRodada();
 	void mudaTurno();
 	void mudaJogadorInicial();
 	void imprimeVidas();
