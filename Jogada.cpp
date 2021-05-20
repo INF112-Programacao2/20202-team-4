@@ -19,9 +19,9 @@ Jogada::Jogada(std::string nomeUsuario){
 	this->jogadorInicialTurno = entidadeAleatoria;
 	
 	this->jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
-	//this->jogadores.push_back(new Calculista("Dilsao", 0));
+	this->jogadores.push_back(new Calculista("Dilsao", 0));
 	this->jogadores.push_back(new Corajoso("Vinicius", 0));
-	//this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
+	this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
 
 Jogada::~Jogada(){

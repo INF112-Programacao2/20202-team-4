@@ -8,6 +8,7 @@ public:
   	Humano(std::string nome, int pontos);
 	
 	int calculaJogada(bool turnoInicial, std::vector<Cartas> cartasJogadas) override;
+	int capturaJogada(bool turnoInicial);
 	
 	~Humano();
 };
