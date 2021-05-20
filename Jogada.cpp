@@ -6,6 +6,10 @@
 Jogada::Jogada(std::string nomeUsuario){
 	srand(time(NULL));
 	
+	this->sobeRodada = true;
+	this->rodaJogo = true;
+	this->rodaJogo = true;
+	
 	baralho = Baralho();
 	int entidadeAleatoria = rand()%4; //Seleciona jogador aleatório para iniciar o jogo
 	this->rodada = 1;
@@ -15,7 +19,7 @@ Jogada::Jogada(std::string nomeUsuario){
 	this->jogadorInicialTurno = entidadeAleatoria;
 	
 	this->jogadores.push_back(new Troll("Pombal", 0)); //Nomes para homenagear as pessoas que inspiraram as personalidades 
-	this->jogadores.push_back(new Calculista("Dilsao", 0));
+	//this->jogadores.push_back(new Calculista("Dilsao", 0));
 	this->jogadores.push_back(new Corajoso("Vinicius", 0));
 	//this->jogadores.push_back(new Humano(nomeUsuario, 0)); //Jogadores adicionados à partida
 }
@@ -31,6 +35,10 @@ int Jogada::get_rodada(){
 
 int Jogada::get_turno(){
 	return this->turno;
+}
+
+bool Jogada::get_rodaJogo(){
+	return this->rodaJogo;
 }
 
 void Jogada::distribuirCartas(){
@@ -109,17 +117,25 @@ void Jogada::analiseRodada(){
 		
 		this->jogadores[i]->set_turnosVencidos(0);
 	}
-	
-	if(this->jogadores.size() == 1) std::cout << "PARABENS " << this->jogadores[0]->get_nome() << " VOCE VENCEU!!!";
 }
 
 void Jogada::mudaTurno(){
+	if(this->rodada == 9)
+		sobeRodada = false;
+  	else if(this->rodada == 2)
+		sobeRodada = true;
+	
 	if(this->turno == this->rodada){
 		this->turno = 0;
-		this->rodada++;
+		sobeRodada ? this->rodada++ : this->rodada--; //Caso a rodada chegue a 9, a contagem começa a descer, fizemos isso para que as cartas sejam suficientes
 		this->turnoInicial = true;
 		analiseRodada();
 	}else this->turno++;
+	
+	if(this->jogadores.size() == 1){
+		this->rodaJogo = false;
+		std::cout << "\n\nParabens, " << this->jogadores[0]->get_nome() << ", voce venceu uhuullll!\n\n\n'o'";
+	}
 }
 
 void Jogada::mudaJogadorInicial(){

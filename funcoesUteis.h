@@ -3,7 +3,7 @@
 
 #include "Cartas.h"
 
-void imprimeMenuFixo();
+void imprimeMenuFixo(int rodadaAtual, int turnoAtual);
 int comparaForcaCartas(Cartas carta1, Cartas carta2);
 std::vector<Cartas> ordenaCartas(std::vector<Cartas> cartas);
 

@@ -2,9 +2,13 @@
 #include <vector>
 #include "funcoesUteis.h"
 
-void imprimeMenuFixo(){
+void imprimeMenuFixo(int rodadaAtual, int turnoAtual){
 	std::cout << "A ordem das cartas e'\nCartas especiais: 4 de paus, 7 de copas, As de espadas, 7 de ouros\n";
 	std::cout << "Cartas normais: 3, 2, A, K, J, Q, 7, 6, 5, 4\n"  << std::endl;
+	std::cout << "Rodada: " << rodadaAtual << "\nTurno: ";
+	if(turnoAtual == 0) std::cout << "Apostas";
+	else std::cout << turnoAtual;
+	std::cout << "\n\n";
 }
 
 int comparaForcaCartas(Cartas carta1, Cartas carta2){ //retorna 0 se a carta 1 for mais forte e 1 caso contrário

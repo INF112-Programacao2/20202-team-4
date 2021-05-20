@@ -15,6 +15,8 @@ class Jogada{
 private:
 	Baralho baralho;
 	bool turnoInicial;
+	bool sobeRodada;
+	bool rodaJogo;
 	int rodada;
 	int turno;
 	int jogadorInicialRodada;
@@ -27,6 +29,7 @@ public:
 	~Jogada();
 	int get_rodada();
 	int get_turno();
+	bool get_rodaJogo();
 	void distribuirCartas();
 	void determinaVencedorTurno();
 	void jogaTurno();
